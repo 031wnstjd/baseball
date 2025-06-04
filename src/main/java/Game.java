@@ -4,12 +4,37 @@ public class Game {
 
     public GuessResult guess(String guessNumber) {
         assertIllegalArgument(guessNumber);
+        return new GuessResult(isSolved(guessNumber), countStrikes(guessNumber), countBalls(guessNumber));
+    }
 
-        if (guessNumber.equals(question)) {
-            return new GuessResult(true, 3, 0);
-        } else {
-            return new GuessResult(false, 0, 3);
+    private boolean isSolved(String guessNumber) {
+        return guessNumber.equals(question);
+    }
+
+    private int countStrikes(String guessNumber) {
+        char[] questionCharArray = question.toCharArray();
+        char[] guessNumberCharArray = guessNumber.toCharArray();
+
+        int strikes = 0;
+        for (int i = 0; i < guessNumber.length(); i++) {
+            if (guessNumberCharArray[i] == questionCharArray[i]) {
+                strikes++;
+            }
         }
+        return strikes;
+    }
+
+    private int countBalls(String guessNumber) {
+        char[] questionCharArray = question.toCharArray();
+        char[] guessNumberCharArray = guessNumber.toCharArray();
+
+        int balls = 0;
+        for (int i = 0; i < guessNumber.length(); i++) {
+            if (guessNumberCharArray[i] != questionCharArray[i]) {
+                balls++;
+            }
+        }
+        return balls;
     }
 
     private void assertIllegalArgument(String guessNumber) {
@@ -27,8 +52,7 @@ public class Game {
             }
         }
 
-        if (isDuplicatedNumber(guessNumber)
-        ) {
+        if (isDuplicatedNumber(guessNumber)) {
             throw new IllegalArgumentException();
         }
     }
