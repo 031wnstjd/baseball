@@ -15,29 +15,29 @@ public class Game {
         char[] questionCharArray = question.toCharArray();
         char[] guessNumberCharArray = guessNumber.toCharArray();
 
-        int strikes = 0;
+        int strikeCount = 0;
         for (int i = 0; i < guessNumber.length(); i++) {
             if (guessNumberCharArray[i] == questionCharArray[i]) {
-                strikes++;
+                strikeCount++;
             }
         }
-        return strikes;
+        return strikeCount;
     }
 
     private int countBalls(String guessNumber) {
         char[] questionCharArray = question.toCharArray();
         char[] guessNumberCharArray = guessNumber.toCharArray();
 
-        int balls = 0;
+        int ballCount = 0;
         for (int i = 0; i < guessNumber.length(); i++) {
             for (int j = 0; j < question.length(); j++) {
                 if (i == j) continue;
                 if (guessNumberCharArray[i] == questionCharArray[j]) {
-                    balls++;
+                    ballCount++;
                 }
             }
         }
-        return balls;
+        return ballCount;
     }
 
     private void assertIllegalArgument(String guessNumber) {
