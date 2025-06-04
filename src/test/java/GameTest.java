@@ -46,19 +46,19 @@ class GameTest {
     @Test
     void returnSolvedResultIfUnMatchedNumber() {
         generateQuestion("123");
-        assertMatchedNumber(game.guess("456"), false, 0, 3);
+        assertMatchedNumber(game.guess("456"), false, 0, 0);
     }
 
     @Test
-    void returnSolvedResultIf2Strikes1Ball() {
+    void returnSolvedResultIf2Strikes0Ball() {
         generateQuestion("123");
-        assertMatchedNumber(game.guess("120"), false, 2, 1);
+        assertMatchedNumber(game.guess("120"), false, 2, 0);
     }
 
     @Test
     void returnSolvedResultIf1Strikes2Ball() {
         generateQuestion("123");
-        assertMatchedNumber(game.guess("453"), false, 1, 2);
+        assertMatchedNumber(game.guess("213"), false, 1, 2);
     }
 
     private void generateQuestion(String questionNumber) {

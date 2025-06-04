@@ -30,8 +30,11 @@ public class Game {
 
         int balls = 0;
         for (int i = 0; i < guessNumber.length(); i++) {
-            if (guessNumberCharArray[i] != questionCharArray[i]) {
-                balls++;
+            for (int j = 0; j < question.length(); j++) {
+                if (i == j) continue;
+                if (guessNumberCharArray[i] == questionCharArray[j]) {
+                    balls++;
+                }
             }
         }
         return balls;
